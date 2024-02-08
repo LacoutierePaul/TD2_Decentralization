@@ -1,0 +1,24 @@
+name: Deploy to IPFS via Pinata
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Deploy to IPFS via Pinata
+      uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4
+      with:
+        pin-name: 'My personal site'  # Name for the pin
+        path: './'               # Path to the files to be deployed
+        pinata-api-key: b96febc544d83723129a  # Pinata API key
+        pinata-secret-api-key: 4a3ac8c0bba00997e04678bc1a1e54cc9a596ed78626d1c1f964e96ed9ebdce1  # Pinata secret API key
+        verbose: true                 # Set to true for verbose output
+        remove-old: false             # Whether to remove old pins or not (true/false)
